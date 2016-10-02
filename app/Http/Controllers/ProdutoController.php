@@ -13,6 +13,19 @@ class ProdutoController extends Controller{
         return view('produto.listagem', compact('produtos'));
     }
 
+    public function create(){
+        return view('produto.formulario');
+    }
+
+    public function store(Request $request){
+        #dd($request->all());
+        $produto = new Produto($request->all());
+        $produto->save();
+
+        #flash('Produto adicionado com sucesso!', 'sucess');
+        return redirect('/');
+    }
+
     public function show($id){
         $produto = Produto::find($id);
         if(!isset($produto)){
@@ -21,4 +34,6 @@ class ProdutoController extends Controller{
 
         return view('produto.detalhes', compact('produto'));
     }
+
+    
 }

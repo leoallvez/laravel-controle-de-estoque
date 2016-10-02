@@ -14,9 +14,11 @@
 /**Route::get('/', function () {
     return view('welcome');
 });*/
-
+Route::get('/', 'ProdutoController@index');
 Route::get('produtos', 'ProdutoController@index');
 Route::get('produtos/mostra/{id?}', 'ProdutoController@show');
-#Route::resource('/produtos/mostra', 'UnidadeMedidaController');
+#Route::resource('/produtos/mostra/{id?}', 'ProdutoController@show');
+Route::get('produtos/novo', 'ProdutoController@create');
+Route::get('produtos/adiconar', 'ProdutoController@store');
 
-
+?>
