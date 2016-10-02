@@ -2,28 +2,23 @@
 
 namespace App\Http\Controllers;
 use App\Produto;
-#use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-#use App\Http\Requests;
-use Request;
 
 class ProdutoController extends Controller{
 
-    public function lista(){
-        //$produtos = DB::select('select * from produtos');
+    public function index(){
         $produtos = Produto::all();
-        //return view('listagem')->with('produtos',$produtos);
-        return view('listagem', compact('produtos'));
+        #dd(count($produtos));
+        return view('produto.listagem', compact('produtos'));
     }
 
-    public function mostra(){
-        $id = Request::input('id', 0);
-        //$resposta = DB::select('select * from produtos where id = ?',[$id]);
-        $p = Produto::find($id);
-        if(!isset($p)){
+    public function show($id){
+        $produto = Produto::find($id);
+        if(!isset($produto)){
             return "Esse produto não existe";
         }
-        //$p = $resposta[0];
-        return view('detalhes', compact('p'));
+
+        return view('produto.detalhes', compact('produto'));
     }
 }

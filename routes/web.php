@@ -15,8 +15,8 @@
     return view('welcome');
 });*/
 
-Route::get('produtos', 'ProdutoController@lista');
-Route::get('produtos/mostra', 'ProdutoController@mostra');
+Route::get('produtos', 'ProdutoController@index');
+Route::get('produtos/mostra/{id?}', 'ProdutoController@show');
 #Route::resource('/produtos/mostra', 'UnidadeMedidaController');
 
 
