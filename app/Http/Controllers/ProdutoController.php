@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 use App\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ProdutoController extends Controller{
 
     public function index(){
         $produtos = Produto::all();
-        #dd(count($produtos));
         return view('produto.listagem', compact('produtos'));
     }
 
@@ -18,16 +18,14 @@ class ProdutoController extends Controller{
     }
 
     public function store(Request $request){
-        #dd($request->all());
         $produto = new Produto($request->all());
         $produto->save();
 
-        #flash('Produto adicionado com sucesso!', 'sucess');
-        return redirect('/');
+        return redirect('produtos')->withInput($request->only('nome'));
     }
 
     public function show($id){
-        $produto = Produto::find($id);
+        $produto = Produto::findOrFail($id);
         if(!isset($produto)){
             return "Esse produto não existe";
         }

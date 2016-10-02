@@ -2,7 +2,8 @@
 
 @section('conteudo')
 	<h1>Novo Produto</h1>
-	<form  action='/Estoque/public/produtos/adiconar' method="get">
+	<form  action='/Estoque/public/produtos/adiconar' method="post">
+		<input type="hidden" name="_token" value="{{{csrf_token()}}}">
 		<div class='form-group'>
 			<label>Nome</label>
 			<input type='text' name='nome' class='form-control'/>

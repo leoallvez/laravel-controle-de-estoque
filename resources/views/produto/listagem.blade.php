@@ -21,7 +21,12 @@
 						</a>
 					</td>
 				</tr>
-			@endforeach	
+			@endforeach
+			@if(old('nome'))
+				<div class='alert alert-success'>
+					<strong> Sucesso! </strong> O produto {{ old('nome') }} foi adcionado.
+				</div>
+			@endif
 		</table>
 	@endif
 	<h4>
