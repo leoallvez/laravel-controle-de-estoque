@@ -17,7 +17,7 @@
 					<td>{{ $produto->descricao }}</td>
 					<td>{{ $produto->quantidade }}</td>
 					<td>
-						<a href='{{ action('ProdutoController@create', $produto->id) }}' >
+						<a href='{{ action('ProdutoController@show', $produto->id) }}' >
 							<span class="glyphicon glyphicon-search"></span>
 						</a>
 					</td>
