@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 use App\Produto;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProdutoRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Database;
 
 class ProdutoController extends Controller{
 
@@ -17,7 +19,7 @@ class ProdutoController extends Controller{
         return view('produto.formulario');
     }
 
-    public function store(Request $request){
+    public function store(ProdutoRequest $request){
         $produto = new Produto($request->all());
         $produto->save();
 
@@ -31,6 +33,14 @@ class ProdutoController extends Controller{
         }
 
         return view('produto.detalhes', compact('produto'));
+    }
+
+    public function destroy($id){
+        $produto = Produto::findOrFail($id);
+
+        $produto->delete();
+
+        return redirect('produtos');
     }
 
     

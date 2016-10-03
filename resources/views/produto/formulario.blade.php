@@ -2,7 +2,16 @@
 
 @section('conteudo')
 	<h1>Novo Produto</h1>
-	<form  action='/Estoque/public/produtos/adiconar' method="post">
+	@if(count($errors) > 0)
+		<div class='alert alert-danger'>
+			<ul>
+				@foreach($errors->all() as $erro)
+					<li> {{$erro}} </li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
+	<form  action='{{ action('ProdutoController@store') }}' method="post">
 		<input type="hidden" name="_token" value="{{{csrf_token()}}}">
 		<div class='form-group'>
 			<label>Nome</label>
