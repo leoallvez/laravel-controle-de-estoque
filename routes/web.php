@@ -22,4 +22,6 @@ Route::get('produtos/novo', 'ProdutoController@create');
 Route::post('produtos/adiconar', 'ProdutoController@store');
 Route::get('produtos/remove/{id}','ProdutoController@destroy');
 
+
+
 ?>
